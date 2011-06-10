@@ -1,0 +1,4 @@
+Kohana Auth module integretad with MongoDB
+
+This module needs MongoDb PHP ODM module
+https://github.com/colinmollenhour/mongodb-php-odm
