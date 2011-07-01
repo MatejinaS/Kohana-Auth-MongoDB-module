@@ -94,7 +94,7 @@ class Kohana_Auth_Mongo extends Auth
 	 * @throws Exception
 	 * @return boolean
 	 */
-	public function check_uniqe($key = false, $value = false)
+	public function check_unique($key = false, $value = false)
 	{
 		if(!$key || !$value)
 			throw new Exception('Missing key or value for check_uniqe');
