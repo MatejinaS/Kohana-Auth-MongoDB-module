@@ -68,13 +68,10 @@ class Kohana_Auth_Mongo extends Auth
 	 */
 	public function password($username)
 	{
-		$user_model = new Model_AuthCollection();
-		$user = $user_model->findOne(array('username' => $username));
+		$user_model = Mongo_Document::factory('auth');
+		$user_model->load(array('username' => $username));
 		
-		if($user)
-			return $user['password'];
-		else
-			return false;
+		return $user_model->loaded() ? $user->password : FALSE;
 	}
 
 	/**
