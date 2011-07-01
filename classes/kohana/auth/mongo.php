@@ -123,19 +123,13 @@ class Kohana_Auth_Mongo extends Auth
 	 */
 	public function register($data = array())
 	{
-		$user = new Model_Auth();
+		$user = Mongo_Document::factory('auth');
 		
 		$data['password'] = $this->hash($data['password']);
 		
-		foreach($data as $key => $value)
-		{
-			$user->{$key} = $value;
-		}
+		$user->load_values($data);
 		
-		if($user->save())
-			return true;
-		
-		return false;
+		return $user->save();
 	}
 
 } // End Auth File
