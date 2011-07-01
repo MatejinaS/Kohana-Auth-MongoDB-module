@@ -27,20 +27,20 @@ class Kohana_Auth_Mongo extends Auth
 	 */
 	protected function _login($username, $password, $remember)
 	{
-		$user_model = new Model_AuthCollection();
+		$user_model = Mongo_Document::factory('auth');
 		$params = array(
 			'$or' => array(
 				array('username' => $username),
 				array('email' => $username),
 			), 
 			'password' => $password);
-		$user = $user_model->findOne($params);
+		$user_model->load($params);
 		
-		if ($user)
+		if ($user_model->loaded())
 		{
+			$user = $user_model->as_array();
 			// Complete the login && unset _id and password
-			unset($user['_id']);
-			unset($user['password']);
+			unset($user['_id'], $user['password']);
 			return $this->complete_login($user);
 		}
 
