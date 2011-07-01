@@ -87,12 +87,7 @@ class Kohana_Auth_Mongo extends Auth
 	{
 		$user = $this->get_user();
 
-		if ($username === FALSE)
-		{
-			return FALSE;
-		}
-
-		return ($password === $this->password($user['username']));
+		return ($username === FALSE) ? FALSE : ($password === $this->password($user['username']));
 	}
 	
 	/**
