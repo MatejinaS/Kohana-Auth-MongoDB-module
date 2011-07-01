@@ -6,9 +6,4 @@ return array(
 	'hash_key'     => '4af9de33347772afc6ffef4c85c5ebeb',
 	'lifetime'     => 1209600,
 	'session_key'  => 'auth_user',
-
-	// Username/password combinations for the Auth File driver
-	'users' => array(
-		// 'admin' => 'b3154acf3a344170077d11bdb5fff31532f679a1919e716a02',
-	),
 );
