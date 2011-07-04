@@ -5,15 +5,14 @@ class Controller_Auth extends Controller {
   public function action_index() {
     $data = NULL;
 
-    if (Auth::instance()->logged_in()==false) {
+    if (Auth::instance()->logged_in() == FALSE) {
       Auth::instance()->login('username', 'password');
-
       if (Auth::instance()->logged_in()) {
-
         $data = Debug::vars(Auth::instance()->get_user());
-
       }
-      else $data = HTML::anchor('/auth/register/', 'Register');
+      else {
+        $data = HTML::anchor('/auth/register/', 'Register');
+      }
     }
     else {
       // Show user data

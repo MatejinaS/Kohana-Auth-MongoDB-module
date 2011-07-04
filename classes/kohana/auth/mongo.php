@@ -72,7 +72,6 @@ class Kohana_Auth_Mongo extends Auth {
   public function password($username) {
     $user_model = Mongo_Document::factory('auth');
     $user_model->load(array('username' => $username));
-
     return $user_model->loaded() ? $user->password : FALSE;
   }
 
@@ -85,7 +84,6 @@ class Kohana_Auth_Mongo extends Auth {
    */
   public function check_password($password) {
     $user = $this->get_user();
-
     return ($username === FALSE) ? FALSE : ($password === $this->password($user['username']));
   }
 
@@ -99,12 +97,12 @@ class Kohana_Auth_Mongo extends Auth {
    * @return boolean
    */
   public function check_unique($key = FALSE, $value = FALSE) {
-    if ($key==false || $value==false) {
+    if ($key == FALSE || $value == FALSE) {
       throw new Exception('Missing key or value for check_uniqe');
     }
     $user_model = Mongo_Document::factory('auth');
     $user_model->findOne(array($key => $value));
-	return $user_model->loaded( )==false;
+    return $user_model->loaded() == FALSE;
   }
 
   /**
