@@ -101,7 +101,7 @@ class Kohana_Auth_Mongo extends Auth {
       throw new Exception('Missing key or value for check_uniqe');
     }
     $user_model = Mongo_Document::factory('auth');
-    $user_model->findOne(array($key => $value));
+    $user_model->load(array($key => $value));
     return $user_model->loaded() == FALSE;
   }
 
