@@ -41,8 +41,8 @@ class Kohana_Auth_Mongo extends Auth {
 
     if ($user_model->loaded()) {
       $user = $user_model->as_array();
-      // Complete the login && unset _id and password
-      unset($user['_id'], $user['password']);
+      // Complete the login && unset password
+      unset($user['password']);
       return $this->complete_login($user);
     }
 
